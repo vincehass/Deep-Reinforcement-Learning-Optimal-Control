@@ -1,0 +1,9 @@
+numpy
+torch
+matplotlib
+pyglet==1.5.15
+pygame
+gym
+pandas
+seaborn
+tqdm
