@@ -294,7 +294,7 @@ class SACAgent(BaseAgent):
                 state = self.env.reset()
                 scores.append(score)
                 score = 0
-            
+                        
             # if training is ready
             if (
                 len(self.memory) >= self.batch_size 
@@ -385,7 +385,7 @@ class SACAgent(BaseAgent):
         #plt.show()
         
         reward_record.to_csv(joindir(RESULT_DIR, '{}-record-{}-{}.csv'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
-        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.pdf'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
+        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.png'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
                                 
     
     
