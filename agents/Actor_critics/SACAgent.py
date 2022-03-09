@@ -16,7 +16,7 @@ matplotlib.use('agg')
 import seaborn as sns
 import pandas as pd
 import numpy as np
-
+from utilities.Config import RESULT_DIR
 
 
 
@@ -294,7 +294,7 @@ class SACAgent(BaseAgent):
                 state = self.env.reset()
                 scores.append(score)
                 score = 0
-                        
+
             # if training is ready
             if (
                 len(self.memory) >= self.batch_size 
