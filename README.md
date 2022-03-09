@@ -76,7 +76,7 @@ The results of DQN's show how we could avoid instable or even divergent nonlinea
 
 The results replicate the results found in the papers for DQN, DoubleDQN, PrioritizedExperienceReplay and N-stepLearning. 
 
-![General Pendulum Results for DQN and its variants models](test/Data_and_graphs/DQN-Agents-records on CartPole-v1-2022-03-09.png)
+![General Pendulum Results for DQN and its variants models](test/Data_and_graphs/DQN-Agents-records-on-CartPole-v1-2022-03-09.png)
 ![Individual Pendulum Results for DoubleDQN](test/Data_and_graphs/Double_DQN-CartPole-v1-2022-03-09.png) 
 
      

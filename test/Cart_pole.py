@@ -98,7 +98,7 @@ def global_plot(Agents, args):
     plt.xlabel('Steps of env interaction (sample complexity)')
     plt.ylabel('Average Reward')
     plt.title('DQN Agents and its variants on {}'.format(args.env_id))
-    plt.savefig(joindir(RESULT_DIR, 'DQN-Agents-records on {}-{}.png'.format(args.env_id, datestr)))
+    plt.savefig(joindir(RESULT_DIR, 'DQN-Agents-records-on-{}-{}.png'.format(args.env_id, datestr)))
                   
 
 def main():

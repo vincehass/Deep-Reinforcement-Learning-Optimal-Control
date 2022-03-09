@@ -1,5 +1,5 @@
 
-RESULT_DIR = RESULT_DIR = '/Users/vince/ThesisDoc/Projects/Reinforcement_learning/Mygithub_repos/Arctic-Deep-Reinforcement-Learning-Benchmark/test/Data_and_graphs'
+RESULT_DIR = '/Users/vince/ThesisDoc/Projects/Reinforcement_learning/Mygithub_repos/Arctic-Deep-Reinforcement-Learning-Benchmark/test/Data_and_graphs'
 
 
 # hyperparameters = {
