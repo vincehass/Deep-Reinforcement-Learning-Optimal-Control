@@ -16,7 +16,7 @@ from tqdm import tqdm
 import datetime
 import matplotlib
 matplotlib.use('agg')
-
+from utilities.Config import RESULT_DIR
 
 
 
@@ -222,7 +222,7 @@ class DoubleDQNAgent(BaseAgent):
             
     ):
         
-        #record_dfs = pd.DataFrame(columns=['steps', 'reward'])
+        
         reward_record = pd.DataFrame(reward_record)
         reward_record['reward_smooth'] = reward_record['meanepreward'].ewm(span=200).mean()
         """Plot the training progresses."""        
@@ -269,7 +269,7 @@ class DoubleDQNAgent(BaseAgent):
         #plt.show()
         
         reward_record.to_csv(joindir(RESULT_DIR, '{}-record-{}-{}.csv'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
-        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.pdf'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
+        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.png'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
     
     def train_rst(self, num_frames: int, plotting_interval: int = 200):
         """Train the agent."""
@@ -335,11 +335,6 @@ class DoubleDQNAgent(BaseAgent):
                     print('-----------------')
             
             
-        # # plotting inside the loop
-        # if frame_idx % plotting_interval == 0:
-        #     self._plot(num_frames, scores, losses, epsilons)
-        #self._plot(num_frames, scores, losses, epsilons)
-        
         
         self._plot_record(reward_record)
         

@@ -118,8 +118,8 @@ def main():
     seed_torch(args.seed)
     args.env.seed(args.seed)
     
-    # Agents = [SACAgent,DDPGAgent, PPOAgent] 
-    Agents = [PPOAgent]
+    Agents = [SACAgent,DDPGAgent, PPOAgent] 
+   
     global_plot(Agents, args)
     
 if __name__ == "__main__":

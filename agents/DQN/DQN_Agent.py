@@ -17,7 +17,7 @@ import datetime
 import matplotlib
 matplotlib.use('agg')
 
-
+from utilities.Config import RESULT_DIR
 
 
 datestr = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -268,7 +268,7 @@ class DQNAgent(BaseAgent):
         #plt.show()
         
         reward_record.to_csv(joindir(RESULT_DIR, '{}-record-{}-{}.csv'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
-        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.pdf'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
+        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.png'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
     
     def train_rst(self, num_frames: int, plotting_interval: int = 200):
         """Train the agent."""

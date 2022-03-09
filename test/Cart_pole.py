@@ -20,7 +20,7 @@ from agents.DQN.DoubleDQN_Agent import DoubleDQNAgent
 from agents.DQN.DQNNStepAgent import DQNNStepAgent
 from agents.DQN.DQN_PER import DQNPERAgent
 #from environements.Action_normalizer import ActionNormalizer
-
+from utilities.Config import RESULT_DIR
 
 
 datestr = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -98,7 +98,7 @@ def global_plot(Agents, args):
     plt.xlabel('Steps of env interaction (sample complexity)')
     plt.ylabel('Average Reward')
     plt.title('DQN Agents and its variants on {}'.format(args.env_id))
-    plt.savefig(joindir(RESULT_DIR, 'DQN-Agents-records on {}-{}.pdf'.format(args.env_id, datestr)))
+    plt.savefig(joindir(RESULT_DIR, 'DQN-Agents-records on {}-{}.png'.format(args.env_id, datestr)))
                   
 
 def main():

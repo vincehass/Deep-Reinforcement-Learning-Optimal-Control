@@ -17,7 +17,7 @@ matplotlib.use('agg')
 import seaborn as sns
 import pandas as pd
 import numpy as np
-
+from utilities.Config import RESULT_DIR
 
 
 
@@ -338,7 +338,7 @@ class DDPGAgent(BaseAgent):
         #plt.show()
         
         reward_record.to_csv(joindir(RESULT_DIR, '{}-record-{}-{}.csv'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
-        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.pdf'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
+        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.png'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
                                 
     
     
