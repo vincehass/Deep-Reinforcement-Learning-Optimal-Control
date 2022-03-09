@@ -14,7 +14,7 @@ matplotlib.use('agg')
 import seaborn as sns
 import pandas as pd
 import numpy as np
-
+from utilities.Config import RESULT_DIR
 
 
 
@@ -136,7 +136,7 @@ class PPOAgent(BaseAgent):
         self.log_probs: List[torch.Tensor] = []
         
         # total steps count
-        self.total_step = 0
+        self.total_step = 1
 
         # mode: train / test
         self.is_test = False
@@ -311,14 +311,15 @@ class PPOAgent(BaseAgent):
 
        
         while self.total_step in range(1, num_frames + 1):
-            for _ in range(200):
+            for _ in range(300):
                 self.total_step += 1
+                
                 action = self.select_action(state)
                 next_state, reward, done = self.step(action)
-
+                
                 state = next_state
                 score += reward[0][0]
-                
+                #print(self.total_step, score)
                 # if episode ends
                 if done[0][0]:
                     state = self.env.reset()
@@ -329,7 +330,7 @@ class PPOAgent(BaseAgent):
             actor_loss, critic_loss = self.update_model(next_state)
             actor_losses.append(actor_loss)
             critic_losses.append(critic_loss)
-            
+            #print(critic_losses)
                     
             reward_record.append({
             'Agent' : self.agent_name,
@@ -341,8 +342,8 @@ class PPOAgent(BaseAgent):
             'Critic loss' : critic_loss,
             })
                   
-            
-            if self.total_step % plotting_interval == 0:
+            if self.total_step > 1:
+            #if self.total_step % plotting_interval == 0:
                 print('Finished episode: {} Average Reward: {:.4f} STD Reward: {:.4f} Actor Loss : {:.4f} Critic Loss : {:.4f} ' \
                 .format(self.total_step, reward_record[-1]['meanepreward'], reward_record[-1]['stdepreward'],actor_loss, critic_loss))
                 print('-----------------')
@@ -365,6 +366,7 @@ class PPOAgent(BaseAgent):
     ):
 
         reward_record = pd.DataFrame(reward_record)
+        #print(reward_record)
         reward_record['reward_smooth'] = reward_record['meanepreward'].ewm(span=200).mean()
         """Plot the training progresses."""        
         
@@ -403,7 +405,7 @@ class PPOAgent(BaseAgent):
         #plt.show()
         
         reward_record.to_csv(joindir(RESULT_DIR, '{}-record-{}-{}.csv'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
-        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.pdf'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
+        plt.savefig(joindir(RESULT_DIR, '{}-{}-{}.png'.format(self.agent_name,self.env.unwrapped.spec.id, datestr)))
                                 
     
     

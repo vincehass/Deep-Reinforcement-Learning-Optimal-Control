@@ -20,7 +20,7 @@ from agents.Actor_critics.DDPG_Agent import DDPGAgent
 from agents.Actor_critics.SACAgent import SACAgent
 from agents.Actor_critics.PPO_Agent import PPOAgent
 from environements.Action_normalizer import ActionNormalizer
-
+from utilities.Config import RESULT_DIR
 
 datestr = datetime.datetime.now().strftime('%Y-%m-%d')
 
@@ -105,7 +105,7 @@ def global_plot(Agents, args):
     plt.xlabel('Steps of env interaction (sample complexity)')
     plt.ylabel('Average Reward')
     plt.title('Actor Critics Agents and its variants on {}'.format(args.env_id))
-    plt.savefig(joindir(RESULT_DIR, 'Actor Critics-Agents-records on {}-{}.pdf'.format(args.env_id, datestr)))
+    plt.savefig(joindir(RESULT_DIR, 'Actor Critics-Agents-records on {}-{}.png'.format(args.env_id, datestr)))
                   
 
 def main():
@@ -118,7 +118,8 @@ def main():
     seed_torch(args.seed)
     args.env.seed(args.seed)
     
-    Agents = [SACAgent,DDPGAgent, PPOAgent] 
+    # Agents = [SACAgent,DDPGAgent, PPOAgent] 
+    Agents = [PPOAgent]
     global_plot(Agents, args)
     
 if __name__ == "__main__":
