@@ -65,9 +65,9 @@ Below shows the performance of Actor Critic models such as DDPG, PPO, SAC and TD
 
 The results replicate the results found in the papers. In the next stage, I plan to show how adding HER can allow an agent to solve problems that it otherwise would not be able to solve at all. Note that the same hyperparameters were used within each pair of agents and so the only difference between them was whether hindsight was used or not. 
 
-![General Cart Pole Results for Actor Critic models]() 
-![Individual Cart Pole Results for DDPG]() 
-![General Cart Pole Results for SAC]() 
+![General Cart Pole Results for Actor Critic models](test/Data_and_graphs/Actor-Critics-Agents-records-on-Pendulum-v1-2022-03-09.png) 
+![Individual Cart Pole Results for DDPG](test/Data_and_graphs/DDPG-Pendulum-v1-2022-03-09.png) 
+![General Cart Pole Results for SAC](test/Data_and_graphs/SAC-Pendulum-v1-2022-03-09.png) 
 
 
 #### 3. DQN Learning Algorithm Experiments
@@ -78,6 +78,7 @@ The results replicate the results found in the papers for DQN, DoubleDQN, Priori
 
 ![General Pendulum Results for DQN and its variants models](test/Data_and_graphs/DQN-Agents-records-on-CartPole-v1-2022-03-09.png)
 ![Individual Pendulum Results for DoubleDQN](test/Data_and_graphs/Double_DQN-CartPole-v1-2022-03-09.png) 
+![Individual Pendulum Results for DQNNStep](test/Data_and_graphs/DQNNStep-CartPole-v1-2022-03-09.png) 
 
      
 
