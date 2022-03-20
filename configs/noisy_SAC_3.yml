@@ -1,0 +1,92 @@
+name: noisy_3
+seed: [3287736738, 1625667942, 3829389197, 234655327, 2736603485]
+time_delta: 1.0      # time (in sec) between control events
+train_steps: 86400   # training steps; 60480 (= 6 * 60 * 24 * 7) is a week of simulation at 10 sec. intervals
+eval_steps: 1800      # evaluation steps, 8 hours
+n_eval_env: 5         # number of evaluation environments
+eval_every: 7200     # evaluate every 'eval_every' steps
+render: no            # if 'yes', will show an animation of the wind farm
+log: yes              # if 'yes', will log data to a folder specified by 'directory' in Tensorboard format
+log_every: 60         # how often to write logs, once per minute
+directory: data       # directory for storing the data and for logging
+rescale_rewards: yes  # in 'yes' rewards are rescaled to be between 0 and 1 based on 'reward_range'
+reward_range: null    # if 'rescale_rewards' is 'yes' but no range is given, the reward range will be inferred
+
+wind_process:
+  type: mvou
+  properties:
+    names:
+      - turbulence_intensity
+      - wind_speed
+      - wind_direction
+    logs:
+      - yes
+      - yes
+      - no
+    mean:
+      - -2.1552094
+      -  2.2769937
+      -  0.0
+    drift:
+      - [ 0.0024904,      5.4994818e-04, -2.3334057e-06]
+      - [-2.1413137e-05,  4.7972649e-05,  5.2700795e-07]
+      - [ 3.0910895e-03, -3.57165e-03,    0.01]
+    diffusion:
+      - [0.0125682, -0.0002111, -0.0004371]
+      - [0.0,        0.0021632,  0.0002508]
+      - [0.0,        0.0,        0.1559985]
+    mean_wind_direction: 270.0
+
+environment:
+  floris: action_representation_floris.json
+  turbine_layout:
+    x:
+      - 0.0
+      - 756.0
+      - 1512.0
+    y:
+      - 0.0
+      - -31.5
+      - 31.5
+  max_angular_velocity: 1.0
+  desired_yaw_boundaries:
+    - -30.0
+    - 30.0
+  observe_yaws: yes
+  lidar_turbines: all
+  normalize_observations: yes
+  perturbed_observations:
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+  farm_observations: 'turbulence_intensity'
+  perturbation_scale: 0.03
+  action_representation: wind
+
+agents:
+  - name: SAC
+    type: sac
+    parameters:
+      discounting_factor: 0.99
+      batch_size: 128
+      buffer_size: 100000
+      start_learning: 7201
+      learning_rate_actor: 0.00001
+      learning_rate_critic: 0.0001
+      polyak_tau: 0.05
+      hidden_sizes_s: []
+      hidden_sizes_a: []
+      hidden_sizes_shared:
+        - 128
+        - 128
+      hidden_sizes_actor:
+        - 128
+        - 128
+      init_alpha: 1.0
+      learning_rate_alpha: 0.0001
+      tune_alpha: yes
+      target_update_frequency: 60
