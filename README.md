@@ -145,3 +145,15 @@ Most Open AI gym environments should work. All you would need to do is change th
 
 You can also play with your own custom game if you create a separate class that inherits from gym.Env. See `Environments`
 for an example of a custom environment and then see the script `test` to see how to have agents play the environment.
+
+
+
+## 4. Environements: WindFarm for Active Wake Control
+
+Below shows various RL algorithms successfully learning discrete action. We record the average result from running the algorithms with 4 random seeds is shown with the shaded area representing plus and minus 1 standard deviation. Hyperparameters used are large can be found in files `config/action_representations_*.yml`.
+
+ ![General Reward Performance Results for SAC, Noisy and Floris Algorithms](Noisy_result.png) 
+
+## 5. Hyperparameters: Could WindFarm Hyperparameters be optimized with a Surrogate Model?
+
+
