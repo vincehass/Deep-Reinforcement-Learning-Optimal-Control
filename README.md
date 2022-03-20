@@ -152,7 +152,7 @@ for an example of a custom environment and then see the script `test` to see how
 
 Below shows various RL algorithms successfully learning discrete action. We record the average result from running the algorithms with 4 random seeds is shown with the shaded area representing plus and minus 1 standard deviation. Hyperparameters used are large can be found in files `config/action_representations_*.yml`.
 
- ![General Reward Performance Results for SAC, Noisy and Floris Algorithms](Noisy_result.png) 
+ ![General Reward Performance Results for SAC, Noisy and Floris Algorithms](images/Noisy_result.png) 
 
 ## 5. Hyperparameters: Could WindFarm Hyperparameters be optimized with a Surrogate Model?
 
